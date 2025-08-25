@@ -1,0 +1,286 @@
+:root { --ink:#111; --muted:#666; --bg:#fff; --line:#e7e7e7; --accent:#0a7; }
+html,body { margin:0; background:var(--bg); color:var(--ink); font:16px/1.5 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Noto Sans", "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji"; }
+.wrap { display:grid; grid-template-columns: 1fr 1fr; gap:1.25rem; padding:1rem; }
+.panel { border:1px solid var(--line); border-radius:8px; padding:1rem; min-height:12rem; }
+h2 { margin:.25rem 0 1rem; font-weight:650; }
+.muted { color:var(--muted); }
+.tiny { font-size:.9rem; }
+.toggle { display:inline-flex; align-items:center; gap:.5rem; margin:.25rem 0 1rem; }
+.source .line { margin:.4rem 0; }
+.source .pinyin { display:none; color:var(--muted); font-size:.95rem; }
+.source.show-pinyin .pinyin { display:block; }
+.target .tline { margin:.4rem 0; }
+.target .clickable { text-decoration: underline dotted; cursor: pointer; }
+.legend .chip { display:inline-block; font-size:.85rem; border:1px solid var(--line); border-radius:999px; padding:.1rem .5rem; margin:.15rem .25rem; }
+
+/* Enhanced chips in popover options */
+.option .chips { 
+  display: block; 
+  margin: .3rem 0 .5rem; 
+  padding: .4rem .6rem;
+  background: #f8f9fa;
+  border-radius: 6px;
+  border-left: 3px solid var(--accent);
+}
+
+.option .chips-label {
+  font-size: .75rem;
+  font-weight: 600;
+  color: #6c757d;
+  margin-bottom: .3rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.option .chips .chip { 
+  margin-right: .3rem; 
+  margin-bottom: .2rem;
+  font-size: .75rem;
+  font-weight: 500;
+  background: white;
+  border: 1px solid #e1e5e9;
+  color: #495057;
+  padding: .2rem .5rem;
+  border-radius: 12px;
+  display: inline-block;
+}
+.popover { position:absolute; max-width:36rem; background:#fff; border:1px solid var(--line); border-radius:8px; padding:.5rem; box-shadow:0 10px 24px rgba(0,0,0,.12); z-index:9999; }
+.option { 
+  padding: .6rem .8rem; 
+  border-radius: .6rem; 
+  border: 1px solid #f0f0f0;
+  margin-bottom: .5rem;
+  transition: all 0.2s ease;
+}
+
+.option:hover { 
+  background: #f8f9fa; 
+  border-color: #e1e5e9;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.option .txt { 
+  font-size: 1.05rem; 
+  font-weight: 500; 
+  margin-bottom: .4rem;
+  line-height: 1.4;
+}
+
+.option .note { 
+  color: var(--muted); 
+  font-size: .9rem; 
+  margin-top: .4rem;
+  padding-top: .4rem;
+  border-top: 1px solid #f0f0f0;
+}
+.bucket { color:#555; font-size:.85rem; margin-top:.1rem; }
+.fade-replace { display:inline-block; position:relative; }
+.fade-replace .from, .fade-replace .to { display:inline-block; transition: all .2s ease; }
+.fade-replace .from { opacity:1; }
+.fade-replace.swap .from { opacity:0; transform: translateY(-2px); }
+.fade-replace .to { opacity:0; position:absolute; inset:0 auto auto 0; }
+.fade-replace.swap .to { opacity:1; transform: translateY(0); position:static; }
+@media (max-width: 900px) { .wrap { grid-template-columns: 1fr; } }
+
+/* Impact indicators */
+.impact-indicator {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 8px 16px;
+  border-radius: 20px;
+  color: white;
+  font-weight: 500;
+  z-index: 10000;
+  animation: slideIn 0.3s ease;
+}
+
+.impact-indicator.high { background: #ff6b6b; }
+.impact-indicator.medium { background: #f39c12; }
+.impact-indicator.low { background: #51cf66; }
+
+@keyframes slideIn {
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+/* Semantic distance indicators */
+.option[data-distance="high"] {
+  border-left: 3px solid #ff6b6b;
+}
+
+.option[data-distance="low"] {
+  border-left: 3px solid #51cf66;
+}
+
+/* Philosophy indicators */
+.philosophy-tag {
+  display: inline-block;
+  padding: .3rem .6rem;
+  border-radius: 16px;
+  font-size: .75rem;
+  font-weight: 600;
+  margin: .3rem 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.philosophy-tag.foreignizing {
+  background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+  color: white;
+  border: none;
+}
+
+.philosophy-tag.domesticating {
+  background: linear-gradient(135deg, #3498db, #2980b9);
+  color: white;
+  border: none;
+}
+
+/* Reader preference bars */
+.reader-preference {
+  margin-top: 8px;
+}
+
+.reader-preference .bar {
+  height: 4px;
+  background: #0a7;
+  border-radius: 2px;
+  margin-bottom: 4px;
+}
+
+.reader-preference .label {
+  font-size: 0.8rem;
+  color: #666;
+}
+
+/* Comparison modal */
+.comparison-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10001;
+}
+
+.comparison-modal .comparison {
+  background: white;
+  padding: 24px;
+  border-radius: 12px;
+  max-width: 600px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  position: relative;
+}
+
+.comparison-modal .comparison button {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  padding: 8px 16px;
+  border: 1px solid #dee2e6;
+  border-radius: 6px;
+  background: white;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.comparison-modal .comparison button:hover {
+  background: #f8f9fa;
+}
+
+/* Enhanced fade transitions */
+.fade-replace.swap .from {
+  opacity: 0.3;
+  transform: translateY(-2px);
+}
+
+.fade-replace.swap .to {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Action buttons */
+.actions {
+  margin-top: 1rem;
+}
+
+.actions button {
+  margin-right: 0.5rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: var(--bg);
+  cursor: pointer;
+}
+
+.actions button:hover {
+  background: #f7f7f7;
+}
+
+/* Strategy toggles */
+.strategy {
+  padding: .5rem;
+  margin-bottom: .5rem;
+  background: #f8f9fa;
+  border-radius: 6px;
+  border: 1px solid #e9ecef;
+}
+
+.strategy label {
+  display: inline-block;
+  margin-right: 1rem;
+  font-size: .85rem;
+  cursor: pointer;
+}
+
+.strategy input[type="checkbox"] {
+  margin-right: .3rem;
+}
+
+/* Ripple dots */
+.ripple { 
+  display: inline-block; 
+  width: .5rem; 
+  height: .5rem; 
+  border-radius: 50%; 
+  background: #0a7; 
+  margin-left: .4rem; 
+  vertical-align: middle; 
+  opacity: .8; 
+}
+
+.ripple.negative { 
+  background: #d33; 
+}
+
+/* Coherence meter */
+#coherence {
+  margin-top: 1rem;
+  padding: 0.5rem;
+  background: #f8f9fa;
+  border-radius: 6px;
+  border: 1px solid #e9ecef;
+}
+
+#coherence button {
+  margin-left: 0.5rem;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.8rem;
+  border: 1px solid #dee2e6;
+  border-radius: 4px;
+  background: white;
+  cursor: pointer;
+}
+
+#coherence button:hover {
+  background: #e9ecef;
+}

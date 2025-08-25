@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Translation Prism — 静夜思 (Li Bai)</title>
+<link rel="stylesheet" href="./assets/css/prism.css" />
+
+<main class="wrap">
+  <section class="panel">
+    <h2>静夜思 <span class="muted">/ Li Bai</span></h2>
+    <label class="toggle">
+      <input type="checkbox" id="pinyinToggle" />
+      <span>Show Pinyin</span>
+    </label>
+    <div id="source" class="source"></div>
+    <p class="muted tiny">
+      Simplified characters with optional Pinyin. Underlines on the translation indicate
+      live alternatives.
+    </p>
+    <div class="actions">
+      <button id="resetOriginal">Reset to Original</button>
+      <button id="showComparison">Compare Versions</button>
+      <button id="shareReading">Share This Reading</button>
+      <button id="exportTEI">Export TEI (apparatus)</button>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Prismatic Translation</h2>
+    <div id="target" class="target"></div>
+    <p id="postChoiceHint" class="muted tiny" hidden>
+      You chose an alternative. Now you can see how others chose (bucketized to avoid bias).
+    </p>
+    <div id="legend" class="legend muted tiny">
+      <strong>Chips:</strong>
+      <span class="chip">literal</span>
+      <span class="chip">poetic</span>
+      <span class="chip">natural</span>
+      <span class="chip">formal</span>
+      <span class="chip">colloquial</span>
+      <span class="chip">keeps parallelism</span>
+      <span class="chip">modal</span>
+      <span class="chip">contemplative</span>
+    </div>
+    <div class="notes muted tiny">
+      <details>
+        <summary>What changes when you switch alternatives?</summary>
+        Each choice trades off different values (e.g., literalness vs. natural cadence, foreignizing vs.
+        domesticating). We keep theory light, but if curious see Nida (formal vs. dynamic equivalence)
+        and Venuti (domestication/foreignization). 
+      </details>
+    </div>
+    <div id="context" class="context muted tiny">
+      <details>
+        <summary>What's at stake in each line?</summary>
+        <div id="contextDetails"></div>
+      </details>
+    </div>
+    
+    <div id="coherence" class="muted tiny">
+      <strong>Overall stance:</strong>
+      <span>Literal ↔ Natural: <span id="axis-ln">—</span></span> ·
+      <span>Foreignizing ↔ Domesticating: <span id="axis-fd">—</span></span>
+      <button id="applyStrategy" class="tiny">Apply current strategy to all lines</button>
+    </div>
+  </section>
+</main>
+
+<!-- Popover for alternatives -->
+<div id="popover" class="popover" hidden></div>
+
+<script type="module" src="./assets/js/prism.js"></script>

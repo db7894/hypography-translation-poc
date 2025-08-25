@@ -1,0 +1,173 @@
+{
+    "id": "jingye-si",
+    "source": {
+      "lang": "zh-Hans",
+      "title": "静夜思",
+      "author": "李白",
+      "lines": [
+        { "text": "床前明月光", "pinyin": "chuáng qián míng yuè guāng" },
+        { "text": "疑是地上霜", "pinyin": "yí shì dì shàng shuāng" },
+        { "text": "举头望明月", "pinyin": "jǔ tóu wàng míng yuè" },
+        { "text": "低头思故乡", "pinyin": "dī tóu sī gù xiāng" }
+      ]
+    },
+    "target": {
+      "lang": "en",
+      "surfaceLines": [
+        "Before my bed, the moonlight lies.",
+        "Perhaps it is frost upon the ground.",
+        "I raise my head to watch the moon.",
+        "I bow my head and think of home."
+      ],
+      "choices": [
+        {
+          "line": 0,
+          "selected": 0,
+          "stakes": "Opens the visual tableau and meter for a balanced jueju-style quatrain; sets register (plain vs. elevated) and governs parallelism with line 2.",
+          "dependencies": [
+            { "affectsLine": 1, "constraint": "parallelism (image→perception)", "delta": -1 },
+            { "affectsLine": 2, "constraint": "gesture symmetry (raise↔bow)", "delta": 1 },
+            { "affectsLine": 3, "constraint": "register coherence (plain↔formal)", "delta": 1 }
+          ],
+          "alternatives": [
+            {
+              "text": "Before my bed, the moonlight lies.",
+              "chips": ["poetic", "keeps parallelism"],
+              "philosophy": "domesticating",
+              "note": "Smooth cadence that mirrors the parallel phrasing of the Chinese; idiomatic ‘lies’ supplies an English verb while preserving stillness.",
+              "weights": { "literal": 0.2, "natural": 0.9, "foreignizing": 0.2, "tone_formal": 0.4, "brevity": 0.6 }
+            },
+            {
+              "text": "Moonlight before my bed,",
+              "chips": ["literal", "compact"],
+              "philosophy": "foreignizing",
+              "note": "Closer to the source word order; paratactic feel foregrounds Classical Chinese concision.",
+              "weights": { "literal": 0.9, "natural": 0.3, "foreignizing": 0.8, "tone_formal": 0.5, "brevity": 0.9 }
+            },
+            {
+              "text": "By my bed the bright moonlight falls,",
+              "chips": ["natural", "imagistic"],
+              "philosophy": "domesticating",
+              "note": "Adds an explicit verb and epithets; slightly more descriptive than the source.",
+              "weights": { "literal": 0.4, "natural": 0.85, "foreignizing": 0.3, "tone_formal": 0.5, "brevity": 0.5 }
+            }
+          ]
+        },
+        {
+          "line": 1,
+          "selected": 0,
+          "stakes": "Handles the ambiguity of ‘疑是’ (uncertainty) and the setting noun (‘ground’ vs. ‘floor’) which shifts scene from outdoors to domestic interior; couples antithetically with line 0.",
+          "dependencies": [
+            { "affectsLine": 0, "constraint": "image continuity (indoor↔outdoor)", "delta": 1 },
+            { "affectsLine": 2, "constraint": "register carryover (modal vs. declarative)", "delta": 1 }
+          ],
+          "alternatives": [
+            {
+              "text": "Perhaps it is frost upon the ground.",
+              "chips": ["modal", "natural"],
+              "philosophy": "domesticating",
+              "note": "‘Perhaps’ renders 疑; ‘ground’ maintains outdoor ambiguity and pairs cleanly with moonlight.",
+              "weights": { "literal": 0.6, "natural": 0.85, "foreignizing": 0.3, "tone_formal": 0.45, "ambiguity": 0.8 }
+            },
+            {
+              "text": "I think it’s frost upon the floor.",
+              "chips": ["interpretive", "domestic"],
+              "philosophy": "domesticating",
+              "note": "Internalizes doubt (‘I think’) and moves the scene inside with ‘floor’.",
+              "weights": { "literal": 0.4, "natural": 0.8, "foreignizing": 0.2, "tone_formal": 0.35, "ambiguity": 0.6 }
+            },
+            {
+              "text": "As if frost lay on the earth.",
+              "chips": ["poetic", "arch"],
+              "philosophy": "foreignizing",
+              "note": "Simulative ‘as if’ for 疑; ‘earth’ heightens register and generality.",
+              "weights": { "literal": 0.5, "natural": 0.65, "foreignizing": 0.6, "tone_formal": 0.7, "ambiguity": 0.75 }
+            }
+          ]
+        },
+        {
+          "line": 2,
+          "selected": 0,
+          "stakes": "Must echo line 3 in gesture (raise/bow) to maintain structural parallelism typical of jueju couplets; verb choice sets overall register.",
+          "dependencies": [
+            { "affectsLine": 3, "constraint": "gesture antithesis (raise ↔ bow)", "delta": 2 },
+            { "affectsLine": 0, "constraint": "register coherence (plain↔formal)", "delta": 1 }
+          ],
+          "alternatives": [
+            {
+              "text": "I raise my head to watch the moon.",
+              "chips": ["literal", "plain"],
+              "philosophy": "foreignizing",
+              "note": "Direct mapping of 举头/望; understated and parallel-ready.",
+              "weights": { "literal": 0.85, "natural": 0.7, "foreignizing": 0.6, "tone_formal": 0.45, "brevity": 0.7 }
+            },
+            {
+              "text": "Lifting my gaze, I behold the moon.",
+              "chips": ["formal", "poetic"],
+              "philosophy": "domesticating",
+              "note": "Elevated diction (‘behold’) increases ceremonial tone; slightly recasts syntax.",
+              "weights": { "literal": 0.5, "natural": 0.8, "foreignizing": 0.3, "tone_formal": 0.8, "brevity": 0.55 }
+            },
+            {
+              "text": "I look up and see the bright moon.",
+              "chips": ["natural", "colloquial"],
+              "philosophy": "domesticating",
+              "note": "Everyday idiom; adds ‘bright’ explicitly to echo 明.",
+              "weights": { "literal": 0.6, "natural": 0.9, "foreignizing": 0.25, "tone_formal": 0.35, "brevity": 0.65 }
+            }
+          ]
+        },
+        {
+          "line": 3,
+          "selected": 0,
+          "stakes": "Closes the emotional arc; must balance with line 2’s upward motion. Word choice for 故乡 (‘home’, ‘homeland’) sets affect (personal vs. formal).",
+          "dependencies": [
+            { "affectsLine": 2, "constraint": "gesture antithesis (raise ↔ bow)", "delta": 2 },
+            { "affectsLine": 1, "constraint": "register carryover (plain vs. elevated)", "delta": 1 }
+          ],
+          "alternatives": [
+            {
+              "text": "I bow my head and think of home.",
+              "chips": ["literal", "contemplative", "keeps gesture"],
+              "philosophy": "foreignizing",
+              "semanticDistance": "low",
+              "readerCount": 750,
+              "note": "Direct translation of 低头思故乡—preserves physical act and plain affect.",
+              "weights": { "literal": 0.9, "natural": 0.85, "foreignizing": 0.55, "tone_formal": 0.45, "nostalgia": 0.7 }
+            },
+            {
+              "text": "Head bent, I'm seized with homesickness.",
+              "chips": ["dramatic", "emotional", "passive voice"],
+              "philosophy": "domesticating",
+              "semanticDistance": "high",
+              "readerCount": 150,
+              "note": "Intensifies emotion; trades quiet reflection for overt feeling.",
+              "weights": { "literal": 0.3, "natural": 0.7, "foreignizing": 0.2, "tone_formal": 0.55, "nostalgia": 0.9 }
+            },
+            {
+              "text": "I lower my gaze, remembering my distant homeland.",
+              "chips": ["formal", "expansive", "nostalgic"],
+              "philosophy": "domesticating",
+              "note": "Adds ‘distant’ and selects ‘homeland’ for elevated register and scope.",
+              "weights": { "literal": 0.5, "natural": 0.8, "foreignizing": 0.25, "tone_formal": 0.75, "nostalgia": 0.85 }
+            },
+            {
+              "text": "And drop my head, dreaming of home.",
+              "chips": ["poetic", "soft", "dreamlike"],
+              "philosophy": "domesticating",
+              "note": "Leans into reverie by rendering 思 as ‘dreaming’.",
+              "weights": { "literal": 0.4, "natural": 0.8, "foreignizing": 0.25, "tone_formal": 0.5, "nostalgia": 0.8 }
+            }
+          ]
+        }
+      ]
+    },
+    "ui": {
+      "axes": [
+        { "id": "source_likeness", "label": "Closer to Chinese ↔ More natural English" },
+        { "id": "register", "label": "Plain ↔ Elevated" },
+        { "id": "ambiguity", "label": "Certainty ↔ Suggestion (‘疑’)" }
+      ],
+      "showAxis": false
+    }
+}

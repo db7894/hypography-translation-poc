@@ -1,0 +1,23 @@
+title: "Prismatic Translation"
+description: "Interactive exploration of translation choices in classical Chinese poetry"
+baseurl: "/translation-prism"  # Your repo name
+url: "https://db7894.github.io"
+
+# Build settings
+markdown: kramdown
+plugins:
+  - jekyll-feed
+
+# Collections
+collections:
+  data:
+    output: true
+    permalink: /data/:name/
+
+# Exclude from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - package.json
+  - package-lock.json
