@@ -1,4 +1,4 @@
-const DATA_URL = '../data/jingyesi.json';
+const DATA_URL = './data/jingyesi.json';
 
 // --- DOM refs
 const $source   = document.getElementById('source');
